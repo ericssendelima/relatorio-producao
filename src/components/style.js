@@ -30,7 +30,7 @@ export const AddInfo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 200px;
+  height: 310px;
   width: 95%;
   color: #f9b17a;
   box-shadow: rgba(0, 0, 0) 0px 19px 38px, rgba(0, 0, 0) 0px 15px 12px;
@@ -165,7 +165,8 @@ export const NormalDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2px;
+  justify-content: center;
+  /* margin-top: 2px; */
 `;
 
 export const Comentarios = styled.textarea`
@@ -201,7 +202,7 @@ export const AddButton = styled.input`
   box-shadow: rgba(0, 0, 0) 0px 10px 20px;
   border-radius: 10px;
   width: 65px;
-  height: 85%;
+  height: 90px;
   cursor: pointer;
   margin: 5px;
   font-weight: bold;

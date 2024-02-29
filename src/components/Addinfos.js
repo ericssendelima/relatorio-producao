@@ -74,7 +74,7 @@ const Addinfos = () => {
 
       <AddInfo>
         <RelatorioForm onSubmit={doIt}>
-          <Sections $positions="100px" $justify="column" $paddings="7px">
+          <Sections $positions="140px" $justify="column" $paddings="7px">
             <LinhasInfo $justifyContent="space-between">
               <Campos $largura="50%">
                 Cabine:
@@ -132,18 +132,18 @@ const Addinfos = () => {
             </LinhasInfo>
           </Sections>
 
-          <Sections $positions="80px" $justify="row" $paddings="10px">
+          <Sections $positions="120px" $justify="row" $paddings="10px">
             <NormalDiv $justify="column">
               <LinhasInfo>
                 <Campos>
                   Situação:
-                  <InputText id="situacao" $comprimento="215px" required />
+                  <InputText id="situacao" $comprimento="190px" required />
                 </Campos>
               </LinhasInfo>
               <LinhasInfo $altura="25px">
                 <Campos>
                   Equipe:
-                  <InputText id="equipe" $comprimento="215px" required />
+                  <InputText id="equipe" $comprimento="190px" required />
                 </Campos>
               </LinhasInfo>
             </NormalDiv>
