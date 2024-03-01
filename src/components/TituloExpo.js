@@ -6,7 +6,7 @@ const TituloExpo = () => {
   const { relatorioFinal } = useContext(RelatorioFinalContext);
   return (
     <VisorInfo>
-      <LinhasInfo $textSize="30px" $justifyContent="center">Relatório</LinhasInfo>
+      <LinhasInfo $textSize="26px" $justifyContent="center">Relatório</LinhasInfo>
       <SectionsTituloRel $positions="35px" $marginsTop="2px" $comprimento="45%" $textSize="20px">
         {relatorioFinal[0].turno}
       </SectionsTituloRel>

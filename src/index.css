@@ -1,6 +1,10 @@
 body {
-  background-color: #0C0E13;
-
+  background-color: #35383D;
+display: flex;
+align-items: center;
+justify-content: center;
+background-image: url(../public/Design\ sem\ nome.png);
+background-size: cover;
 
 
 }
@@ -10,6 +14,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 50%;
   height: 50rem;
+
+  @media (max-width:685px) {
+    width: 100%;
+    
+  }
 }

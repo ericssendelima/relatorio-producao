@@ -23,6 +23,7 @@ export const H1Relatorio = styled.h1`
   color: #f9b17a;
   /* background-color: blueviolet; */
   width: 100%;
+  font-size: 26px;
 `;
 
 export const AddInfo = styled.div`
@@ -40,13 +41,14 @@ export const AddInfo = styled.div`
 `;
 
 export const ObsExpo = styled(AddInfo)`
-  /* background-color: blueviolet; */
+  background-color: transparent;
+  box-shadow: none;
   height: 100px;
   /* position: relative; */
   flex-direction: row;
   padding-right: 3px;
   justify-content: space-around;
-
+  width: ${(props) => props.$comprimento};
 `;
 
 export const VisorInfo = styled(AddInfo)`
@@ -60,7 +62,6 @@ export const VisorInfo = styled(AddInfo)`
   align-items: flex-start;
   height: auto;
   margin: 8px 0 5px 0;
-
 `;
 
 export const InputText = styled.input`
@@ -74,6 +75,10 @@ export const InputText = styled.input`
   width: ${(props) => props.$comprimento};
   margin-left: 7px;
   text-transform: ${(props) => props.$textForm};
+
+  @media (max-width: 370px) {
+    width: 100px;
+  }
 `;
 
 export const AddSelected = styled.select`
@@ -94,7 +99,7 @@ export const AddOptions = styled.option`
 export const Sections = styled.div`
   /* background-color: blue; */
 
-  width: 98%;
+  width: ${(props) => props.$widths};
   height: ${(props) =>
     props.$positions === "top"
       ? "37%"
@@ -112,6 +117,7 @@ export const Sections = styled.div`
   background-color: #1c1f24;
   margin-top: ${(props) => props.$paddings};
   margin-top: ${(props) => props.$marginsTop};
+  margin-left: ${(props) => props.$marginsLeft};
 `;
 
 export const SectionsExpo = styled(Sections)`
@@ -124,7 +130,7 @@ export const SectionsExpo = styled(Sections)`
 `;
 
 export const SectionsTituloRel = styled(Sections)`
-/* background-color: blueviolet; */
+  /* background-color: blueviolet; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,6 +161,7 @@ export const LinhasInfoExpo = styled(LinhasInfo)`
 export const Campos = styled.div`
   /* background-color: darkseagreen; */
   width: ${(props) => props.$largura};
+  margin-bottom: ${(props) => props.$marginBottom};
 `;
 
 export const NormalDiv = styled.div`
@@ -180,7 +187,7 @@ export const Comentarios = styled.textarea`
   margin: 5px;
   resize: none;
   box-sizing: border-box;
-  width: 85%;
+  width: 90%;
   height: 90%;
 `;
 
@@ -202,10 +209,13 @@ export const AddButton = styled.input`
   box-shadow: rgba(0, 0, 0) 0px 10px 20px;
   border-radius: 10px;
   width: 65px;
-  height: 90px;
+  height: 70px;
   cursor: pointer;
   margin: 5px;
   font-weight: bold;
+  &:hover {
+    background-color: #ffdcc4;
+  }
 `;
 
 export const LimpezaTotal = styled(AddButton)`
@@ -216,15 +226,28 @@ export const LimpezaTotal = styled(AddButton)`
   margin-top: 10px;
   position: relative;
   bottom: 5px;
+  &:hover {
+    background-color: red;
+  }
 `;
 
 export const Enviar = styled(LimpezaTotal)`
   position: fixed;
   bottom: 3px;
   right: 3px;
-  width: 55px;
-  height: 55px;
-  font-size: 15px;
+  width: 95px;
+  height: 40px;
+  font-size: 20px;
+  background-color: #37aac0;
+
+  @media (max-width: 685px) {
+    width: 55px;
+    font-size: 15px;
+  }
+
+  &:hover {
+    background-color: #f9b17a;
+  }
 `;
 
 export const ExcluirRelatorio = styled.button`
@@ -241,12 +264,24 @@ export const ExcluirRelatorio = styled.button`
   font-size: 15px;
   padding: 0;
   margin: 0;
+  &:hover {
+    background-color: red;
+  }
 `;
 
 export const EnviarObs = styled(ExcluirRelatorio)`
-  /* position: absolute;
-  bottom: 8px;
-  right: 4%; */
+  font-size: 25px;
   width: 40px;
   height: 40px;
+  margin-right: 5px;
+  &:hover {
+    background-color: #ffdcc4;
+  }
+`;
+
+export const Subir = styled(EnviarObs)`
+  position: fixed;
+  bottom: 8px;
+  left: 5px;
+  border-radius: 50%;
 `;

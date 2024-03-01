@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ListaContext } from "../contexts/ListaContext";
 import { RelatorioFinalContext } from "../contexts/RelatorioFinalContext";
 
-import { BsSendPlusFill } from "react-icons/bs";
+import { TbDeviceIpadDown } from "react-icons/tb";
 
 import {
   RelatorioForm,
@@ -27,9 +27,6 @@ const Addinfos = () => {
   const { relatorioFinal, setRelatorioFinal } = useContext(
     RelatorioFinalContext
   );
-
-
-
 
   const doIt = (e) => {
     e.preventDefault();
@@ -57,13 +54,23 @@ const Addinfos = () => {
     setRelatorioFinal([objFinal, [...lista, obj]]);
 
     
+  document.getElementById("cabine").value = "";
+  document.getElementById("cliente").value = "";
+  document.getElementById("secao").value = "";
+  document.getElementById("torre").value = "";
+  document.getElementById("situacao").value = "";
+  document.getElementById("equipe").value = "";
   };
 
   const addObs = () => {
     let relOne = relatorioFinal[0];
     relOne.observacao = document.getElementById("observacao").value;
     setRelatorioFinal([relOne, lista]);
-    // console.log(relatorioFinal);
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -74,16 +81,20 @@ const Addinfos = () => {
 
       <AddInfo>
         <RelatorioForm onSubmit={doIt}>
-          <Sections $positions="140px" $justify="column" $paddings="7px">
+          <Sections $positions="140px" $justify="column" $paddings="7px" $widths="98%">
             <LinhasInfo $justifyContent="space-between">
               <Campos $largura="50%">
                 Cabine:
                 <AddSelected id="cabine" required>
                   <AddOptions value=""></AddOptions>
-                  <AddOptions value="Jato 01">Jato 01</AddOptions>
-                  <AddOptions value="Jato 02">Jato 02</AddOptions>
-                  <AddOptions value="Jato 03">Jato 03</AddOptions>
-                  <AddOptions value="Metalização">Metalização</AddOptions>
+                  <AddOptions value="JATO 01">JATO 01</AddOptions>
+                  <AddOptions value="JATO 02">JATO 02</AddOptions>
+                  <AddOptions value="JATO 03">JATO 03</AddOptions>
+                  <AddOptions value="METALIZAÇÃO">METALIZAÇÃO</AddOptions>
+                  <AddOptions value="PINTURA 01">PINTURA 01</AddOptions>
+                  <AddOptions value="PINTURA 02">PINTURA 02</AddOptions>
+                  <AddOptions value="PINTURA 03">PINTURA 03</AddOptions>
+                  <AddOptions value="PINTURA 04">PINTURA 04</AddOptions>
                 </AddSelected>
               </Campos>
               <Campos>
@@ -132,24 +143,25 @@ const Addinfos = () => {
             </LinhasInfo>
           </Sections>
 
-          <Sections $positions="120px" $justify="row" $paddings="10px">
-            <NormalDiv $justify="column">
-              <LinhasInfo>
-                <Campos>
-                  Situação:
-                  <InputText id="situacao" $comprimento="190px" required />
-                </Campos>
-              </LinhasInfo>
-              <LinhasInfo $altura="25px">
-                <Campos>
-                  Equipe:
-                  <InputText id="equipe" $comprimento="190px" required />
-                </Campos>
-              </LinhasInfo>
-            </NormalDiv>
-
+          <ObsExpo $comprimento="100%">
+            <Sections $positions="90px" $justify="row" $marginsLeft="5px" $widths="92%">
+              <NormalDiv $justify="column">
+                <LinhasInfo>
+                  <Campos>
+                    Situação:
+                    <InputText id="situacao" $comprimento="140px" required />
+                  </Campos>
+                </LinhasInfo>
+                <LinhasInfo $altura="25px">
+                  <Campos $marginBottom="5px">
+                    Equipe:
+                    <InputText id="equipe" $comprimento="140px" required />
+                  </Campos>
+                </LinhasInfo>
+              </NormalDiv>
+            </Sections>
             <AddButton type="submit" value="+" />
-          </Sections>
+          </ObsExpo>
         </RelatorioForm>
       </AddInfo>
       <ObsExpo>
@@ -160,7 +172,7 @@ const Addinfos = () => {
         ></Comentarios>
 
         <EnviarObs onClick={addObs}>
-          <BsSendPlusFill />
+          <TbDeviceIpadDown />
         </EnviarObs>
       </ObsExpo>
     </>
