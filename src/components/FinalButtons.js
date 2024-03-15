@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { uid } from "uid";
 
 import { Enviar, VisorInfo, Subir } from "./style";
 import { LimpezaTotal } from "./style";
@@ -8,46 +9,42 @@ import { RelatorioFinalContext } from "../contexts/RelatorioFinalContext";
 
 import { FaChevronUp } from "react-icons/fa";
 
+import { ref, set } from "firebase/database";
+import { db } from "../firebase/config";
+
 const FinalButtons = () => {
   const { setLista } = useContext(ListaContext);
 
   const { relatorioFinal } = useContext(RelatorioFinalContext);
 
-  let texto = `${relatorioFinal[0].turno} - ${relatorioFinal[0].data}
-  `;
+  
 
   const doIt = () => {
     setLista([]);
   };
-  const enviar = () => {
-    relatorioFinal[1].map(
-      (obj) =>
-        (texto += `
-    ${obj.cabine}
-    ${obj.cliente}
-    ${obj.secao}T${obj.torre}
-    ${obj.situacao}
-    ${obj.equipe}
-    `)
-    );
 
-    texto += `
-Observações:
-${relatorioFinal[0].observacao}`;
+  
+   
+  const salvar = () => {
+    set(ref(db, `relatorios/${relatorioFinal[0].data}/`), {
+      data: relatorioFinal[0].data,
+      turno: relatorioFinal[0].turno,
+      observacao: relatorioFinal[0].observacao,
+    }, ).then(alert("Relatório salvo com sucesso!"));
 
-    let conteudo = encodeURIComponent(texto)
-      .replace(/['()]/g, escape)
-      .replace(/\*/g, "%2A")
-      .replace(/%(?:7C|60|5E)/g, unescape);
-
-
-    // const url = `https://wa.me//${n}?text=${conteudo}`;
-  const url = "https://api.whatsapp.com/send?text=" + conteudo;
-
-
-    window.location.href = url;
-
-    // console.log(texto);
+    // eslint-disable-next-line
+    relatorioFinal[1].map(obj => {
+      let rUid = uid(25)
+      
+      set(ref(db, `relatorios/${relatorioFinal[0].data}/dados/${rUid}/`), {
+        cabine: obj.cabine,
+        secao: obj.secao,
+        torre: obj.torre,
+        equipe: obj.equipe,
+        situacao: obj.situacao,
+        cliente: obj.cliente,
+      });
+    })
   };
 
   const subir = () => {
@@ -61,7 +58,7 @@ ${relatorioFinal[0].observacao}`;
   return (
     <VisorInfo>
       <LimpezaTotal type="submit" value="Excluir tudo" onClick={doIt} />
-      <Enviar type="submit" value="Enviar" onClick={enviar} />
+      <Enviar type="submit" value="Salvar" onClick={() => salvar()} />
       <Subir onClick={subir}><FaChevronUp /></Subir>
 
     </VisorInfo>
@@ -69,3 +66,5 @@ ${relatorioFinal[0].observacao}`;
 };
 
 export default FinalButtons;
+
+

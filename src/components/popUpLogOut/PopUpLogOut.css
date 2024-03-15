@@ -1,0 +1,160 @@
+div#PopUpLogOutContainer {
+  border: 1px solid rgba(0, 0, 0, 0.249);
+  border-radius: 10px;
+  height: 155px;
+  width: 235px;
+  position: fixed;
+  top: 30px;
+  right: 15px;
+  background-color: #f2dcc2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div#popuphuserheader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* background-color: #948eff; */
+  height: 55px;
+  padding: 6px 2px 0 10px;
+  color: #011526;
+}
+
+div#popuphuserheader button {
+  color: #011526;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-top: 2px;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  &:active {
+    cursor: pointer;
+    background-color: rgb(222, 88, 88);
+    border-radius: 50%;
+
+  }
+
+  &:hover,
+  :active {
+    background-color: rgb(222, 88, 88);
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+}
+
+div#userPopUpInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  /* background-color: aquamarine; */
+  height: 50px;
+  width: 190px;
+}
+
+div#userPopUpInfo p {
+  font-size: 13px;
+  margin: 0;
+}
+div#userPopUpInfo h4 {
+  font-size: 15px;
+  margin: 0;
+}
+
+div#signout,
+div#historico {
+  border-top: 1px solid rgba(0, 0, 0, 0.249);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button#logout {
+  background-color: #011526;
+  margin-bottom: 3px;
+  border: none;
+  width: 220px;
+  height: 35px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #f2dcc2;
+
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:active {
+    cursor: pointer;
+      background-color: #011526;
+      color: #f2dcc2;
+  }
+
+  @media (min-width: 438px) {
+    &:hover {
+      background-color: #01152690;
+      color:#f2dcc2;
+      cursor: pointer;
+    }
+    &:active {
+      cursor: pointer;
+      background-color: #011526;
+      color: #f2dcc2;
+    }
+  }
+}
+
+button#logout span {
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+button#histDados {
+  background-color: #011526;
+
+
+  font-size: 15px;
+
+  border: none;
+  width: 220px;
+  height: 35px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #f2dcc2;
+
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:active {
+    cursor: pointer;
+      background-color: #011526;
+      color: #f2dcc2;
+  }
+
+  @media (min-width: 438px) {
+    &:hover {
+      background-color: #01152690;
+      color:#f2dcc2;
+      cursor: pointer;
+    }
+    &:active {
+      cursor: pointer;
+      background-color: #011526;
+      color: #f2dcc2;
+    }
+  }
+}

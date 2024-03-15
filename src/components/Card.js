@@ -22,7 +22,6 @@ const Card = (props) => {
     );
     setLista(newLista);
     setRelatorioFinal([relatorioFinal[0], [...newLista]])
-    console.log(relatorioFinal)
   };
 
   return (

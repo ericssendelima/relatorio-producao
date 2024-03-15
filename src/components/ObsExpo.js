@@ -8,11 +8,11 @@ const ObsExpo = () => {
   
   return (
     <VisorInfo>
-      <LinhasInfo $textSize="25px" $justifyContent="center">
+      <LinhasInfo $textSize="23px" $justifyContent="center" style={{color: "#f2dcc2"}}>
         Observações
       </LinhasInfo>
 
-      <SectionsTituloRel $textSize="18px" $positions="auto" $comprimento="98%">
+      <SectionsTituloRel $textSize="15px" $positions="auto" $comprimento="98%" style={{padding:"10px"}}>
         {relatorioFinal[0].observacao}
       </SectionsTituloRel>
     </VisorInfo>

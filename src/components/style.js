@@ -9,7 +9,8 @@ export const TituloRelatorio = styled.div`
   border-radius: 15px 15px 0 0;
 
   font-weight: bold;
-  background-color: #111316;
+  background-color: #011525;
+
   box-shadow: rgba(0, 0, 0, 0.5) 0px 8px 20px;
   border-radius: 10px;
 `;
@@ -20,7 +21,7 @@ export const H1Relatorio = styled.h1`
   justify-content: center;
   font-weight: bold;
   text-shadow: 0.1em 0.1em 20px black;
-  color: #f9b17a;
+  color: #f2dcc2;
   /* background-color: blueviolet; */
   width: 100%;
   font-size: 26px;
@@ -31,13 +32,13 @@ export const AddInfo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 310px;
+  height: 260px;
   width: 95%;
-  color: #f9b17a;
+  color: #011525;
   box-shadow: rgba(0, 0, 0) 0px 19px 38px, rgba(0, 0, 0) 0px 15px 12px;
   margin-top: 10px;
   border-radius: 10px 10px 0 0;
-  background-color: #111316;
+  background-color: #011525af;
 `;
 
 export const ObsExpo = styled(AddInfo)`
@@ -55,7 +56,6 @@ export const VisorInfo = styled(AddInfo)`
   /* background-color: blueviolet; */
   border-radius: 0 0 10px 10px;
   justify-content: space-around;
-
   list-style: none;
   flex-direction: row;
   flex-wrap: wrap;
@@ -65,16 +65,19 @@ export const VisorInfo = styled(AddInfo)`
 `;
 
 export const InputText = styled.input`
-  background-color: #35383d;
-  color: #f9b17a;
-
+  background-color: #f2dcc2;
+  color: #011526;
+  padding-left: 5px;
   border: none;
-  box-shadow: rgba(0, 0, 0) 0px 10px 20px;
+  box-shadow: rgb(0,0,0,0.4) 0px 5px 5px;
   border-radius: 5px;
   height: 20px;
   width: ${(props) => props.$comprimento};
   margin-left: 7px;
   text-transform: ${(props) => props.$textForm};
+
+  outline: none;
+  
 
   @media (max-width: 370px) {
     width: 100px;
@@ -82,18 +85,21 @@ export const InputText = styled.input`
 `;
 
 export const AddSelected = styled.select`
-  background-color: #f9b17a;
+  background-color: #f2522e;
   /* width: 15px; */
   font-weight: bold;
+  border: none;
   margin-left: 5px;
   border-radius: 5px;
   height: 20px;
-  box-shadow: rgba(0, 0, 0) 0px 10px 20px;
+  box-shadow: rgb(0,0,0,0.4) 0px 5px 5px;
+  outline: none;
 `;
 
 export const AddOptions = styled.option`
-  background-color: #1c1f24;
-  color: #f9b17a;
+  background-color: #bfae99;
+  color: #011526;
+  border: none;
 `;
 
 export const Sections = styled.div`
@@ -114,14 +120,16 @@ export const Sections = styled.div`
   flex-direction: ${(props) => props.$justify};
   box-shadow: rgba(0, 0, 0) 0px 10px 20px;
   border-radius: 5px;
-  background-color: #1c1f24;
+  background-color: #bfae99;
   margin-top: ${(props) => props.$paddings};
   margin-top: ${(props) => props.$marginsTop};
   margin-left: ${(props) => props.$marginsLeft};
 `;
 
 export const SectionsExpo = styled(Sections)`
-  background-color: #35383d;
+  background-color: #f2dcc2;
+  color: #011526;
+
   height: 100px;
   width: 300px;
   padding-bottom: 8px;
@@ -139,6 +147,9 @@ export const SectionsTituloRel = styled(Sections)`
   font-size: ${(props) => props.$textSize};
   margin-bottom: 5px;
   white-space: pre-line;
+  color: #011526;
+  background-color: #f2dcc2;
+  /* padding: 10px */
 `;
 
 export const LinhasInfo = styled.div`
@@ -156,10 +167,12 @@ export const LinhasInfo = styled.div`
 export const LinhasInfoExpo = styled(LinhasInfo)`
   /* background-color: brown; */
   margin: 5px 0 0px 5px;
+  font-size: 13.5px;
 `;
 
 export const Campos = styled.div`
   /* background-color: darkseagreen; */
+  font-size: 14.5px;
   width: ${(props) => props.$largura};
   margin-bottom: ${(props) => props.$marginBottom};
 `;
@@ -177,18 +190,19 @@ export const NormalDiv = styled.div`
 `;
 
 export const Comentarios = styled.textarea`
-  background-color: #1c1f24;
+  background-color: #f2dcc2;
   box-shadow: rgba(0, 0, 0) 0px 10px 20px;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   line-height: 1.5;
-  color: #f9b17a;
+  color: #011526;
   margin: 5px;
   resize: none;
   box-sizing: border-box;
   width: 90%;
   height: 90%;
+  outline:none;
 `;
 
 export const RelatorioForm = styled.form`
@@ -203,8 +217,9 @@ export const AddButton = styled.input`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f9b17a;
-  color: #1c1f24;
+  background-color: #f2522e;
+
+  color: #011526;
   font-size: 35px;
   box-shadow: rgba(0, 0, 0) 0px 10px 20px;
   border-radius: 10px;
@@ -213,8 +228,12 @@ export const AddButton = styled.input`
   cursor: pointer;
   margin: 5px;
   font-weight: bold;
-  &:hover {
-    background-color: #ffdcc4;
+
+  @media (min-width: 450px) {
+    &:hover {
+      background-color: #f2522eaf;
+      color: #f2dcc2;
+    }
   }
 `;
 
@@ -226,8 +245,13 @@ export const LimpezaTotal = styled(AddButton)`
   margin-top: 10px;
   position: relative;
   bottom: 5px;
-  &:hover {
-    background-color: red;
+
+  @media (min-width: 450px) {
+    &:hover {
+      background-color: #f2522eaf;
+      cursor: pointer;
+      color: #f2dcc2;
+    }
   }
 `;
 
@@ -238,22 +262,26 @@ export const Enviar = styled(LimpezaTotal)`
   width: 95px;
   height: 40px;
   font-size: 20px;
-  background-color: #37aac0;
+  background-color: #f2dcc2;
 
   @media (max-width: 685px) {
     width: 55px;
     font-size: 15px;
   }
 
-  &:hover {
-    background-color: #f9b17a;
+  @media (min-width: 450px) {
+    &:hover {
+      background-color: #f2dcc2af;
+      cursor: pointer;
+      color: #111526;
+    }
   }
 `;
 
 export const ExcluirRelatorio = styled.button`
-  background-color: #f9b17a;
+  background-color: #f2522e;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0) 0px 10px 20px;
+  box-shadow: rgb(0,0,0,0.4) 0px 5px 5px;
   border-radius: 7px;
 
   display: flex;
@@ -264,9 +292,6 @@ export const ExcluirRelatorio = styled.button`
   font-size: 15px;
   padding: 0;
   margin: 0;
-  &:hover {
-    background-color: red;
-  }
 `;
 
 export const EnviarObs = styled(ExcluirRelatorio)`
@@ -274,9 +299,6 @@ export const EnviarObs = styled(ExcluirRelatorio)`
   width: 40px;
   height: 40px;
   margin-right: 5px;
-  &:hover {
-    background-color: #ffdcc4;
-  }
 `;
 
 export const Subir = styled(EnviarObs)`
@@ -284,4 +306,5 @@ export const Subir = styled(EnviarObs)`
   bottom: 8px;
   left: 5px;
   border-radius: 50%;
+  background-color: #f2dcc2;
 `;

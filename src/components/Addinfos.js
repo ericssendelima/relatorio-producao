@@ -1,8 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import "./Addinfos.css";
 import { ListaContext } from "../contexts/ListaContext";
 import { RelatorioFinalContext } from "../contexts/RelatorioFinalContext";
 
+import PopUpLogOut from "./popUpLogOut/PopUpLogOut";
+
 import { TbDeviceIpadDown } from "react-icons/tb";
+import { HiMenuAlt3 } from "react-icons/hi";
 
 import {
   RelatorioForm,
@@ -22,7 +26,10 @@ import {
   ObsExpo,
 } from "./style";
 
-const Addinfos = () => {
+const Addinfos = ({ checkLog }) => {
+  const [popUpUser, setPopUpUser] = useState(false);
+  const atualDate = new Date(Date.now()).toLocaleDateString(["pt-br"]);
+
   const { lista, setLista } = useContext(ListaContext);
   const { relatorioFinal, setRelatorioFinal } = useContext(
     RelatorioFinalContext
@@ -42,24 +49,22 @@ const Addinfos = () => {
     };
 
     let objFinal = {
-      turno: "Turno C",
-      data: document
-        .getElementById("data")
-        .value.split("-")
-        .reverse()
-        .join("/"),
+      turno: "TURNO C",
+      // data: document.getElementById("data").value,
+      data: atualDate.split("/").reverse().join("-"),
+      observacao: document.getElementById("observacao").value,
     };
+    //data: document.getElementById("data").value.split("-").reverse().join("/")
 
     setLista([...lista, obj]);
     setRelatorioFinal([objFinal, [...lista, obj]]);
 
-    
-  document.getElementById("cabine").value = "";
-  document.getElementById("cliente").value = "";
-  document.getElementById("secao").value = "";
-  document.getElementById("torre").value = "";
-  document.getElementById("situacao").value = "";
-  document.getElementById("equipe").value = "";
+    document.getElementById("cabine").value = "";
+    document.getElementById("cliente").value = "";
+    document.getElementById("secao").value = "";
+    document.getElementById("torre").value = "";
+    document.getElementById("situacao").value = "";
+    document.getElementById("equipe").value = "";
   };
 
   const addObs = () => {
@@ -73,15 +78,30 @@ const Addinfos = () => {
     });
   };
 
+  const openPopUpUser = () => {
+    setPopUpUser(!popUpUser);
+  };
+
   return (
     <>
       <TituloRelatorio>
         <H1Relatorio>Relatório de produção</H1Relatorio>
+        <button id="perfilLog" onClick={() => openPopUpUser()}>
+          <HiMenuAlt3 />
+        </button>
+        {popUpUser && (
+          <PopUpLogOut checkLog={checkLog} openPopUpUser={openPopUpUser} />
+        )}
       </TituloRelatorio>
 
       <AddInfo>
         <RelatorioForm onSubmit={doIt}>
-          <Sections $positions="140px" $justify="column" $paddings="7px" $widths="98%">
+          <Sections
+            $positions="140px"
+            $justify="column"
+            $paddings="7px"
+            $widths="98%"
+          >
             <LinhasInfo $justifyContent="space-between">
               <Campos $largura="50%">
                 Cabine:
@@ -98,13 +118,12 @@ const Addinfos = () => {
                 </AddSelected>
               </Campos>
               <Campos>
-                Data:
-                <InputText
+                Data:<span>&nbsp;{atualDate}</span>
+                {/* <InputText
                   id="data"
                   type="date"
                   $comprimento="100px"
-                  required
-                />
+                /> */}
               </Campos>
             </LinhasInfo>
             <LinhasInfo>
@@ -144,7 +163,12 @@ const Addinfos = () => {
           </Sections>
 
           <ObsExpo $comprimento="100%">
-            <Sections $positions="90px" $justify="row" $marginsLeft="5px" $widths="92%">
+            <Sections
+              $positions="90px"
+              $justify="row"
+              $marginsLeft="5px"
+              $widths="92%"
+            >
               <NormalDiv $justify="column">
                 <LinhasInfo>
                   <Campos>
