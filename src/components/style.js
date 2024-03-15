@@ -262,7 +262,7 @@ export const Enviar = styled(LimpezaTotal)`
   width: 95px;
   height: 40px;
   font-size: 20px;
-  background-color: #f2dcc2;
+  background-color: #59de92;
 
   @media (max-width: 685px) {
     width: 55px;
@@ -271,7 +271,7 @@ export const Enviar = styled(LimpezaTotal)`
 
   @media (min-width: 450px) {
     &:hover {
-      background-color: #f2dcc2af;
+      background-color: #59de9290;
       cursor: pointer;
       color: #111526;
     }

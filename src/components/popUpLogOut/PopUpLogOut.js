@@ -37,7 +37,7 @@ const PopUpLogOut = ({ openPopUpUser, checkLog }) => {
       <div id="signout">
         <button id="logout" onClick={() => sair()}>
           <TbLogout2 />
-          <span>SignOut</span>
+          <span>Logout</span>
         </button>
       </div>
       {isHistOn && <PoppupHistDados histOn={{isHistOn, setIsHistOn}}/>}

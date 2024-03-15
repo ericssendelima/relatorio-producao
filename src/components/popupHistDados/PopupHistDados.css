@@ -1,11 +1,11 @@
 div#PopupHistDadosContainer {
   background-color: #011526;
-  width: 350px;
+  width: 330px;
   height: 600px;
   border: 1px solid #f2dcc290;
   position: fixed;
   top: 10px;
-  right: inherit;
+  right: 2px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -115,7 +115,7 @@ div#tituloHist{
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 div#bodyHist{
@@ -148,7 +148,7 @@ div#bodyHist li span{
 
 div#bodyHist li {
   /* background-color: blue; */
-  width: 70%;
+  width: 65%;
 }
 
 
@@ -238,7 +238,7 @@ div#liAndButtons{
   padding-top: 10px;
   padding-bottom: 10px;
   /* background-color: #a72ef2; */
-  width: 310px;
+  width: 300px;
   height: 130px;
   line-height: 0.9rem;
   border-bottom: 1px solid rgb(0, 0, 0, 0.3)
