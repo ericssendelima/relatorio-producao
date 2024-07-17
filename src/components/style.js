@@ -243,8 +243,6 @@ export const LimpezaTotal = styled(AddButton)`
   font-weight: bold;
   height: 40px;
   margin-top: 10px;
-  position: relative;
-  bottom: 5px;
 
   @media (min-width: 450px) {
     &:hover {
@@ -256,7 +254,7 @@ export const LimpezaTotal = styled(AddButton)`
 `;
 
 export const Enviar = styled(LimpezaTotal)`
-  position: fixed;
+  /* position: fixed; */
   bottom: 3px;
   right: 3px;
   width: 95px;
@@ -304,7 +302,11 @@ export const EnviarObs = styled(ExcluirRelatorio)`
 export const Subir = styled(EnviarObs)`
   position: fixed;
   bottom: 8px;
-  left: 5px;
+  left: 0;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background-color: #f2dcc2;
+  background-color: #BFAE99;
+  border: none;
+  box-shadow: none;
 `;

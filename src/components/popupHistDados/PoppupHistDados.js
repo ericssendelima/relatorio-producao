@@ -22,6 +22,7 @@ const PoppupHistDados = ({ histOn }) => {
   const [situacao, setSituacao] = useState("");
   const [cliente, setCliente] = useState("");
   const [equipe, setEquipe] = useState("");
+  const [observacao, setObservacao] = useState("");
 
   let arrChaves = [];
   let texto = "";
@@ -50,14 +51,20 @@ const PoppupHistDados = ({ histOn }) => {
   }
 
   const editar = (rel) => {
-    setCabine(relatorios[atualDate].dados[rel].cabine);
-    setCliente(relatorios[atualDate].dados[rel].cliente);
-    setEquipe(relatorios[atualDate].dados[rel].equipe);
-    setSecao(relatorios[atualDate].dados[rel].secao);
-    setSituacao(relatorios[atualDate].dados[rel].situacao);
-    setTorre(relatorios[atualDate].dados[rel].torre);
+    if (rel === "obsEdit") {
+      setIsEditing({ editing: true, atualRel: rel });
 
-    setIsEditing({ editing: true, atualRel: rel });
+      setObservacao(relatorios[atualDate].observacao);
+    } else {
+      setIsEditing({ editing: true, atualRel: rel });
+
+      setCabine(relatorios[atualDate].dados[rel].cabine);
+      setCliente(relatorios[atualDate].dados[rel].cliente);
+      setEquipe(relatorios[atualDate].dados[rel].equipe);
+      setSecao(relatorios[atualDate].dados[rel].secao);
+      setSituacao(relatorios[atualDate].dados[rel].situacao);
+      setTorre(relatorios[atualDate].dados[rel].torre);
+    }
   };
 
   const cancelarEdit = () => {
@@ -80,18 +87,27 @@ const PoppupHistDados = ({ histOn }) => {
   };
 
   const atualizar = (rel) => {
-    update(ref(db, `relatorios/${atualDate}/dados/${rel}`), {
-      cabine,
-      cliente,
-      secao,
-      torre,
-      situacao,
-      equipe,
-    }).then(cancelarEdit());
+    if (rel === "obsEdit") {
+      update(ref(db, `relatorios/${atualDate}/`), {
+        observacao
+      }).then(cancelarEdit());
+    }else{
+      update(ref(db, `relatorios/${atualDate}/dados/${rel}`), {
+        cabine,
+        cliente,
+        secao,
+        torre,
+        situacao,
+        equipe,
+      }).then(cancelarEdit());
+    }
   };
 
   if (relatorios.hasOwnProperty(atualDate)) {
-    texto = `${relatorios[atualDate].turno} - ${relatorios[atualDate].data.split("-").reverse().join("/")}
+    texto = `${relatorios[atualDate].turno} - ${relatorios[atualDate].data
+      .split("-")
+      .reverse()
+      .join("/")}
   `;
     arrChaves.map(
       (keysRel) =>
@@ -244,32 +260,48 @@ ${relatorios[atualDate].observacao}`;
                 </div>
               ))}
           </ul>
-          <span>
-            Observações:
+          <div id="obs">
+            <div id="tituloObs">
+              Observações{" "}
+              <div id="buttonsLi">
+                {isEditing.editing && isEditing.atualRel === "obsEdit" ? (
+                  <>
+                    <button id="cancelarEdit" onClick={() => cancelarEdit()}>
+                      <CgClose />
+                    </button>
+                    <button id="excluirRelCabine" onClick={() => atualizar("obsEdit")}>
+                      <BsFillSendCheckFill />
+                    </button>
+                  </>
+                ) : relatorios[atualDate] === "" ||
+                  relatorios[atualDate] === undefined ? (
+                  ""
+                ) : (
+                  <button id="editRelCabine" onClick={() => editar("obsEdit")}>
+                    <TbEdit />
+                  </button>
+                )}
+              </div>
+            </div>
+
             <br />
-            <br />
-            {relatorios.hasOwnProperty(atualDate) &&
-              relatorios[atualDate].observacao}
-          </span>
+            {isEditing.editing && isEditing.atualRel === "obsEdit" ? 
+              <textarea id="editingObs" value={observacao} onChange={(e)=>setObservacao(e.target.value)}/> : relatorios.hasOwnProperty(atualDate) &&
+              relatorios[atualDate].observacao  }
+          </div>
 
           {arrChaves.length === 1 && (
             <button id="excluirRelDia" onClick={() => excluirRelDia()}>
               Apagar relatório
             </button>
           )}
-          <div
-            style={{
-              width: "305px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {(relatorios[atualDate] !== "" && relatorios[atualDate] !== undefined ) && (
-              <button id="enviarRelatorio" onClick={() => enviarRelatorio()}>
-                Enviar
-              </button>
-            )}
+          <div id="sendButton">
+            {relatorios[atualDate] !== "" &&
+              relatorios[atualDate] !== undefined && (
+                <button id="enviarRelatorio" onClick={() => enviarRelatorio()}>
+                  Enviar
+                </button>
+              )}
           </div>
         </div>
       </div>
