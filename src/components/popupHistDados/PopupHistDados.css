@@ -159,6 +159,8 @@ div#bodyHist li {
 div#bodyHist ul {
   list-style: none;
   padding-left: 0;
+  width: 95%;
+  /* background-color: #59de92; */
 }
 
 div#editingSecaoAndTorre input {

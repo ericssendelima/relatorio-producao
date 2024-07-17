@@ -76,6 +76,7 @@ const FinalButtons = () => {
       });
     }
     subir()
+    doIt()
   };
 
   const subir = () => {
