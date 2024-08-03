@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { uid } from "uid";
+//import { uid } from "uid";
 
 import { Enviar, VisorInfo, Subir } from "./style";
 import { LimpezaTotal } from "./style";
@@ -49,7 +49,8 @@ const FinalButtons = () => {
 
       // eslint-disable-next-line
       relatorioFinal[1].map((obj) => {
-        let rUid = uid(25);
+        //let rUid = uid(25);
+          let rUid = Date.now();
 
         set(ref(db, `relatorios/${relatorioFinal[0].data}/dados/${rUid}/`), {
           cabine: obj.cabine,
@@ -63,7 +64,8 @@ const FinalButtons = () => {
     }else{
       // eslint-disable-next-line
       relatorioFinal[1].map((obj) => {
-        let rUid = uid(25);
+        //let rUid = uid(25);
+          let rUid = Date.now();
 
         set(ref(db, `relatorios/${relatorioFinal[0].data}/dados/${rUid}/`), {
           cabine: obj.cabine,
